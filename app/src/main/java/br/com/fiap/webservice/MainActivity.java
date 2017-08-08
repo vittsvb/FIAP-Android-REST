@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,19 +19,23 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView resposta = (TextView) findViewById(R.id.txt_resposta);
+    private TextView resposta;
+    private EditText codigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        resposta = (TextView) findViewById(R.id.txt_resposta);
+        codigo = (EditText) findViewById(R.id.edt_codigo);
     }
 
     public void buscar(View view){
         //Instanciar a classe Task
         BuscaTask task = new BuscaTask();
         //Chamar o método execute
-        task.execute(1);
+        task.execute(Integer.parseInt(codigo.getText().toString()));
     }
 
     private class BuscaTask extends AsyncTask<Integer,Void,String>{
