@@ -1,12 +1,10 @@
 package br.com.fiap.webservice;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -15,53 +13,32 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
-
-    private TextView resposta;
-    private EditText codigo;
+public class ActivityCep extends AppCompatActivity {
+    private EditText cep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cep);
 
-        resposta = (TextView) findViewById(R.id.txt_resposta);
-        codigo = (EditText) findViewById(R.id.edt_codigo);
+        cep = (EditText) findViewById(R.id.edt_cep);
     }
 
-    public void buscar(View view){
+    public void buscarCEP(View view){
         //Instanciar a classe Task
-        BuscaTask task = new BuscaTask();
+        BuscaCepTask task = new BuscaCepTask();
         //Chamar o método execute
-        task.execute(Integer.parseInt(codigo.getText().toString()));
+        task.execute(1);
     }
 
-    private class BuscaTask extends AsyncTask<Integer,Void,String>{
+    private class BuscaCepTask extends AsyncTask<Integer,Void,String> {
 
-        private ProgressDialog progress;
-
-        @Override
-        protected void onPreExecute() {
-            progress = ProgressDialog.show(MainActivity.this, "Aguarde... ", "Buscando dados");
-        }
-
-        //Método executado após o método doInBackground
         @Override
         protected void onPostExecute(String s) {
-            progress.dismiss();
-            //Recuperar os valores do JSON
             if(s != null){
                 try {
-                    JSONObject json = new JSONObject(s);
-                    long codigo = json.getLong("codigo");
-                    String descricao = json.getString("descricao");
-                    int quantidade = json.getInt("quantidade");
-                    double preco = json.getDouble("preco");
-
-                    resposta.setText("Código: " + codigo + "\nDescrição: " + descricao + "\nQuantidade: " + quantidade + "\nPreço: R$ " + preco);
 
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -69,18 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
             }else{
                 Toast.makeText(MainActivity.this, "Erro ao realizar consulta", Toast.LENGTH_LONG).show();
-
             }
-//            Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
         }
 
-        //Método que executa a tarefa "pesada"
         @Override
         protected String doInBackground(Integer... params) {
-            //Chamar o webservice restful
             try {
                 //Criar a URL (localhost é 10.0.2.2)
-                URL url = new URL("http://10.20.63.61:8080/MercadoFiap/rest/mercado/"+params[0]);
+                URL url = new URL("http://api.postmon.com.br/v1/cep/"+params[0]);
                 //Obter uma conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -113,4 +86,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
+
 }
+
