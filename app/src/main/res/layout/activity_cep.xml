@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:id="@+id/localidade"
-        android:hint="@string/localidade"
+        android:hint="Cidade"
         android:gravity="center"/>
 
     <EditText

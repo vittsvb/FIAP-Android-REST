@@ -1,9 +1,12 @@
 package br.com.fiap.webservice;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +27,24 @@ public class MainActivity extends AppCompatActivity {
     private EditText codigo;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_cadastar){
+            Intent intent = new Intent(this, PostActivity.class);
+            startActivity(intent);
+        }else if(item.getItemId() == R.id.menu_cep){
+            Intent intent = new Intent(this, ActivityCep.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -32,11 +53,16 @@ public class MainActivity extends AppCompatActivity {
         codigo = (EditText) findViewById(R.id.edt_codigo);
     }
 
-    public void buscar(View view){
+    public void buscar(View v){
         //Instanciar a classe Task
         BuscaTask task = new BuscaTask();
         //Chamar o método execute
         task.execute(Integer.parseInt(codigo.getText().toString()));
+    }
+
+    public void goCadastrar(View v) {
+        Intent intent = new Intent(this, PostActivity.class);
+        startActivity(intent);
     }
 
     private class BuscaTask extends AsyncTask<Integer,Void,String>{

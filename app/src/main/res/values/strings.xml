@@ -9,4 +9,5 @@
     <string name="localidade">Localidade</string>
     <string name="uf">UF</string>
     <string name="ibge">IBGE</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
