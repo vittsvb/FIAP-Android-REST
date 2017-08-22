@@ -60,11 +60,6 @@ public class MainActivity extends AppCompatActivity {
         task.execute(Integer.parseInt(codigo.getText().toString()));
     }
 
-    public void goCadastrar(View v) {
-        Intent intent = new Intent(this, PostActivity.class);
-        startActivity(intent);
-    }
-
     private class BuscaTask extends AsyncTask<Integer,Void,String>{
 
         private ProgressDialog progress;

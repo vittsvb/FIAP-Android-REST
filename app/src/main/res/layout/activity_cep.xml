@@ -20,32 +20,22 @@
         android:gravity="center"/>
 
     <Button
-        android:text="@string/btn_buscar"
+        android:text="Buscar CEP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_buscarCEP"
-        android:onClick="buscarCEP"/>
+        android:id="@+id/btn_buscar"
+        android:onClick="buscarCEP" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/logradouro"
+        android:id="@+id/logra"
         android:hint="@string/logradouro"
         android:gravity="center"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/complemento"
-        android:hint="@string/complemento"
-        android:gravity="center"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
         android:id="@+id/bairro"
         android:hint="@string/bairro"
         android:gravity="center"/>
@@ -53,7 +43,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:id="@+id/localidade"
         android:hint="Cidade"
         android:gravity="center"/>
@@ -61,18 +50,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:id="@+id/uf"
         android:hint="@string/uf"
         android:gravity="center"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/ibge"
-        android:hint="@string/ibge"
-        android:gravity="center"/>
 
 
 </LinearLayout>
