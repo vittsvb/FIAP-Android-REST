@@ -4,6 +4,8 @@
             <item android:id="@+id/menu_cadastar"
                 android:title="Cadastrar" />
             <item android:id="@+id/menu_cep"
-                android:title="CEP" />
+                android:title="Consultar CEP" />
+            <item android:id="@+id/menu_listar"
+                android:title="Listar Cadastros" />
 
 </menu>
