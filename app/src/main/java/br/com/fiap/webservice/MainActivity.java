@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             //Chamar o webservice restful
             try {
                 //Criar a URL (localhost é 10.0.2.2)
-                URL url = new URL("http://10.20.63.61:8080/MercadoFiap/rest/mercado/" + params[0]);
+                    URL url = new URL("http://localhost:8080/MercadoFiap/rest/mercado/" + params[0]);
                 //Obter uma conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 

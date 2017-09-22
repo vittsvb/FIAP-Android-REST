@@ -51,7 +51,7 @@ public class PostActivity extends AppCompatActivity {
 
             try {
                 //Criar a URL (localhost é 10.0.2.2)
-                URL url = new URL("http://10.20.63.61:8080/MercadoFiap/rest/mercado/");
+                URL url = new URL("http://localhost:8080/MercadoFiap/rest/mercado/");
                 //Obter uma conexão
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
